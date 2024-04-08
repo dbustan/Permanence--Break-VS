@@ -8,6 +8,8 @@ public class FloorButton : MonoBehaviour
 
     public LayerMask layerMask;
     public GameObject buttonTriggerObj;
+    public Renderer particleFieldRenderer;
+    public Material unpressedMat, pressedMat;
     private ButtonTrigger buttonTrigger;
 
     private int unpressedFrames;
@@ -23,6 +25,7 @@ public class FloorButton : MonoBehaviour
         unpressedFrames = 0;
         colliding = false;
         pressed = false;
+        particleFieldRenderer.sharedMaterial = unpressedMat;
     }
 
     void FixedUpdate() {
@@ -48,12 +51,14 @@ public class FloorButton : MonoBehaviour
 
     private void pressButton() {
         pressed = true;
+        particleFieldRenderer.sharedMaterial = pressedMat;
         if(buttonTrigger != null) {
             buttonTrigger.buttonPress(buttonId);
         }
     }
     private void releaseButton() {
         pressed = false;
+        particleFieldRenderer.sharedMaterial = unpressedMat;
         if(buttonTrigger != null) {
             buttonTrigger.buttonRelease(buttonId);
         }

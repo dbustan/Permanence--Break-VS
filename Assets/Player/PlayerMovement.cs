@@ -18,21 +18,31 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight;
     public Image speedReadout;
 
+    private SoundManager soundManager;
     private Camera playerCamera;
     private bool jumping;
+
+    public float moveThreshold = 1.45f;
+    private AudioSource [] footsteps;
+    private Vector3 lastPos;
     private CharacterController cc;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject soundManagerGameobj = GameObject.Find("SoundManager");
+        soundManager = soundManagerGameobj.GetComponent<SoundManager>(); 
+        lastPos = transform.position;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         playerCamera = GetComponentInChildren<Camera>();
         cc = GetComponent<CharacterController>();
+        footsteps = GetComponents<AudioSource>();
         speedReadout.rectTransform.localScale = new Vector3(1f, getSpeedReadoutScale(), 1f);
         currentSpeedPreCurve = Mathf.Sqrt(currentSpeed/speedRange);
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -57,12 +67,23 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void move() {
+        
         float forward = Input.GetMouseButton(1) ? 1f : 0f;
-
+        
         Vector3 movement = transform.rotation * new Vector3(0f, 0f, forward) * currentSpeed * Time.deltaTime;
+        
         movement += Vector3.up * verticalVelocity * Time.deltaTime;
+        float moveDistance = Vector3.Distance(transform.position, lastPos);
+        if (moveDistance >= moveThreshold){
+            lastPos = transform.position;
+      
+            Debug.Log("hwdaad");
+        }
+        
         cc.Move(movement);
     }
+
+  
     private void cameraRotation() {
         Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         Vector3 rotationDelta = new Vector3(-mouseMovement.y, mouseMovement.x, 0f) * cameraSensitivity * Time.deltaTime;

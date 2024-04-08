@@ -32,7 +32,7 @@ public class VisibilityPass : ScriptableRenderPass
         SortingSettings ss = new SortingSettings(renderingData.cameraData.camera) {
             criteria = SortingCriteria.BackToFront
         };
-        DrawingSettings drawSettings = new DrawingSettings(new ShaderTagId("UniversalForward"), ss)
+        DrawingSettings drawSettings = new DrawingSettings(new ShaderTagId("SRPDefaultUnlit"), ss)
         {
             overrideShader = visibilityShader
         };

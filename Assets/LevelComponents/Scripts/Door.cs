@@ -41,7 +41,7 @@ public class Door : MonoBehaviour, ButtonTrigger
             setAnimationSpeed();
         }
     }
-    private bool shouldOpen() {
+    public bool shouldOpen() {
         return (activeButtons.Count >= numButtons) ^ defaultOpen;
     }
     private void setAnimationSpeed() {
@@ -59,5 +59,9 @@ public class Door : MonoBehaviour, ButtonTrigger
         } else {
             animator.CrossFade("DoorArmature|Open", 0f, 0, 0f);
         }
+    }
+
+    public bool getOpenState(){
+        return openState;
     }
 }

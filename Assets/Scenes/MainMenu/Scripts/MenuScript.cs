@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +9,18 @@ using UnityEngine.UI;
 public class MenuScript : MonoBehaviour
 {
     [SerializeField] Button Play, Options, Quit;
-    [SerializeField] GameObject loadingScreen, configScreen, mainMenuCanvas, mainMenuScreen, optionsScreen, creditsScreen, saveSlotScreen;
-
+    [SerializeField] GameObject loadingScreen, configScreen, mainMenuCanvas, mainMenuScreen, optionsScreen, creditsScreen, saveSlotScreen, levelSelectScreen;
+    
+    [SerializeField] private SaveManager saveManager;
     [SerializeField] SoundManager sm;
 
-    private AudioSource[] audioInMenu;
+    private AudioSource[] audioInMenu, buttonHovers;
 
-    private AudioSource mainMenuMusic, buttonHover, buttonClick;
+
+
+    ArrayList buttonHoverList = new ArrayList();
+
+    private AudioSource buttonClick;
 
     GameObject currentScreen;
     List<GameObject> Dots = new List<GameObject>();
@@ -22,18 +28,21 @@ public class MenuScript : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         currentScreen = mainMenuScreen;
         audioInMenu = GetComponents<AudioSource>();
         audioSetup();
-        sm.playAudio(mainMenuMusic, "Music");
-        
+
         //GrabLoadingTextObj(loadingScreen.transform);
         //Invoke("SwitchToConfig", 5);
     }
 
-    private void audioSetup(){
-        mainMenuMusic = audioInMenu[0];
-        buttonHover = audioInMenu[1];
+    private void audioSetup()
+    {
+        buttonHoverList.Add(audioInMenu[0]);
+        buttonHoverList.Add(audioInMenu[1]);
+        //audioInMenu[1].Play();
         buttonClick = audioInMenu[2];
 
     }
@@ -84,12 +93,20 @@ public class MenuScript : MonoBehaviour
         currentScreen = optionsScreen;
     }
 
+    public void OpenLevelSelect(){
+        currentScreen.SetActive(false);
+        levelSelectScreen.SetActive(true);
+        currentScreen = levelSelectScreen;
+    }
+
     public void OpenCreditsScreen()
     {
         currentScreen.SetActive(false);
         creditsScreen.SetActive(true);
         currentScreen = creditsScreen;
     }
+
+  
 
     public void OpenMainMenu()
     {
@@ -103,16 +120,27 @@ public class MenuScript : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadLevel()
+    public void LoadLevel1()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
-    public void onButtonHover(){
-        sm.playAudio(buttonHover, "Sound");
+     public void LoadLevel2()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
     }
 
-    public void onButtonClick(){
+    public void LoadLevel3(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+    }
+
+    public void onButtonHover()
+    {
+        sm.playAudio(buttonHoverList);
+    }
+
+    public void onButtonClick()
+    {
         sm.playAudio(buttonClick, "Sound");
     }
 
