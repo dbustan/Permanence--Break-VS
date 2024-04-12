@@ -1,56 +1,54 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+//Class handles gathering saves
 public class Save : MonoBehaviour
 {
 
    
    [SerializeField] public SaveManager saveManager;
 
-   [SerializeField] private MenuScript menuManager;
-
-   [SerializeField] private GameObject LevelSelectUI;
-
    [SerializeField] private TextMeshProUGUI saveDescription;
 
-   private SaveData save; 
+   private SaveDataSerializable saveSlotData;
 
-   private void Awake(){
-
-   }
+   private string currentPath;
    private void Start(){
-      
+      saveSlotData = CheckSave();
+      if (saveSlotData == null){
+         GenerateBlankSaveSlot();
+      }
+      //Find a save data, else Generate
    }
    public void OnClick(){
-      save = saveManager.SetCurrentGameSlot(gameObject.name);
-      if (save.GameBeat){
-         menuManager.OpenLevelSelect();
-      } else {
-         SceneManager.LoadScene(save.currentLevel);
+      saveManager.SetCurrentSaveData(saveSlotData);
+   }
+
+   private SaveDataSerializable CheckSave(){
+      currentPath = Application.persistentDataPath + this.gameObject.name + ".json";
+      if (File.Exists(currentPath)){
+         string json = File.ReadAllText(currentPath);
+         SaveDataSerializable currentSaveData = JsonUtility.FromJson<SaveDataSerializable>(json);
+         return currentSaveData;
+      } else{
+         return null;
       }
-      
-       
    }
 
    private void GenerateBlankSaveSlot(){
-      save = SaveData.CreateInstance<SaveData>();
-      save.saveDataName = gameObject.name;
-      //saveDescription.text = save.currentSlotInfo;
+      saveSlotData = new SaveDataSerializable();
+      saveSlotData.saveDataName = gameObject.name;
+      Debug.Log("Generated Save File");
    }
 
-   public SaveData GetSaveData(){
-      return save;
-   }
 
-   public void SetSaveData(SaveData newSave){
-      save = newSave;
-      saveDescription.text = save.currentSlotInfo;
-   }
 
 
 

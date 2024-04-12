@@ -17,18 +17,6 @@ public class SaveDataSerializable
     public bool GameBeat;
     
 
-    public void SetSerializableData(SaveData saveData){
-        saveDataName = saveData.saveDataName;
-        currentLevel = saveData.currentLevel;
-        currentSlotInfo = saveData.currentSlotInfo;
-        GameBeat = saveData.GameBeat;
-        
-    }
-    public void SetSaveData(SaveData saveData){
-        saveData.saveDataName = saveDataName;
-        saveData.currentLevel = currentLevel;
-        saveData.currentSlotInfo = currentSlotInfo;
-        saveData.GameBeat = GameBeat;
-    }
+    
     
 }

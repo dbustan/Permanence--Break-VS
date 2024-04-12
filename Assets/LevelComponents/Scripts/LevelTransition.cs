@@ -10,7 +10,7 @@ public class LevelTransition : MonoBehaviour
         GameObject saveManagerObj = GameObject.Find("SaveManager");
         if(other.tag == "Player") {
             SaveManager saveManager = saveManagerObj.GetComponent<SaveManager>();
-            SaveData currentSave = saveManager.GetCurrentSaveData();
+            SaveDataSerializable currentSave = saveManager.GetCurrentSaveData();
             if (currentSave.GameBeat){
                 SceneManager.LoadScene("MainMenu");
             } else {
