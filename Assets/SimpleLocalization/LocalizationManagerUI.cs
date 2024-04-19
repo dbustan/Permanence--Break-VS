@@ -10,7 +10,7 @@ namespace Assets.SimpleLocalization
 	/// <summary>
 	/// Asset usage example.
 	/// </summary>
-	public class Example1 : MonoBehaviour
+	public class LocalizationManagerUI : MonoBehaviour
 	{
 		public Text FormattedText;
 		[SerializeField] public TMP_FontAsset FontAssetEnglish;

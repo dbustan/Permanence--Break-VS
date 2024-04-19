@@ -1,59 +1,84 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 
 //Class handles gathering saves
 public class Save : MonoBehaviour
 {
-
-   
    [SerializeField] public SaveManager saveManager;
+   [SerializeField] private Config config;
 
    [SerializeField] private TextMeshProUGUI saveDescription;
 
    private SaveDataSerializable saveSlotData;
 
    private string currentPath;
-   private void Start(){
-      saveSlotData = CheckSave();
-      if (saveSlotData == null){
-         GenerateBlankSaveSlot();
-      }
-      //Find a save data, else Generate
-   }
-   public void OnClick(){
+
+   private void Start()
+    {
+        //Find a save data, else Generate
+        SetUpSaveSlotData();
+        saveDescription.text = saveSlotData.currentSlotInfo;
+    }
+
+    private void SetUpSaveSlotData()
+    {
+        saveSlotData = CheckSave();
+        if (saveSlotData == null)
+        {
+            GenerateBlankSaveSlot();
+        }
+    }
+
+    public void OnClick()
+   {
       saveManager.SetCurrentSaveData(saveSlotData);
+      Debug.Log(saveSlotData.currentLevel);
+      SceneManager.LoadScene(saveSlotData.currentLevel);
+
    }
 
-   private SaveDataSerializable CheckSave(){
-      currentPath = Application.persistentDataPath + this.gameObject.name + ".json";
-      if (File.Exists(currentPath)){
+   private SaveDataSerializable CheckSave()
+   {
+      currentPath = $"{Application.persistentDataPath}/{this.gameObject.name}.json";
+      Debug.Log(currentPath);
+      Debug.Log(File.Exists(currentPath) ? "true" : "false");
+      if (File.Exists(currentPath))
+      {
+         Debug.Log("File Exist for: " + this.gameObject.name);
          string json = File.ReadAllText(currentPath);
          SaveDataSerializable currentSaveData = JsonUtility.FromJson<SaveDataSerializable>(json);
          return currentSaveData;
-      } else{
-         return null;
       }
+      
+      return null;
    }
 
-   private void GenerateBlankSaveSlot(){
-      saveSlotData = new SaveDataSerializable();
-      saveSlotData.saveDataName = gameObject.name;
-      Debug.Log("Generated Save File");
+   private void GenerateBlankSaveSlot()
+   {
+      saveSlotData = new SaveDataSerializable
+      {
+         saveDataName = this.gameObject.name,
+         currentLevel = "Level1",
+         currentSlotInfo = "Empty",
+         GameBeat = false,
+
+      };
+   }
+
+   public void ResetSave()
+   {
+      currentPath = $"{Application.persistentDataPath}/{this.gameObject.name}.json";
+      File.Delete(currentPath);
+      GenerateBlankSaveSlot();
+      saveDescription.text = saveSlotData.currentSlotInfo;
    }
 
 
 
 
 
-
-   
-
-    
 }

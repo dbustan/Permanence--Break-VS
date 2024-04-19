@@ -2118,7 +2118,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 692bf093bc191c548afede19496dd480,
+        type: 3}
     - target: {fileID: 150134993903570638, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2137,8 +2138,14 @@ PrefabInstance:
     - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: -3383114752907294022, guid: 6491a1404840cf54c9751f263da2ec13,
+        type: 3}
     - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -2152,12 +2159,17 @@ PrefabInstance:
     - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: refreshText
+      value: ChangeLanguage
       objectReference: {fileID: 0}
     - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MovementTutorialScript, Assembly-CSharp
+      value: Config, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 764710994017207683, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
@@ -2572,8 +2584,14 @@ PrefabInstance:
     - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: -3383114752907294022, guid: 6491a1404840cf54c9751f263da2ec13,
+        type: 3}
     - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -2587,12 +2605,17 @@ PrefabInstance:
     - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: refreshText
+      value: ChangeLanguage
       objectReference: {fileID: 0}
     - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: MovementTutorialScript, Assembly-CSharp
+      value: Config, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Chinese
       objectReference: {fileID: 0}
     - target: {fileID: 6454604295567514115, guid: 576a228d7df159249a42f5c424e3c9b0,
         type: 3}
@@ -2768,9 +2791,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf0cb18066307b478867b6a8397c773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVol: {fileID: 7118358940700968569}
-  musicVol: {fileID: 1400726160367586065}
-  soundVol: {fileID: 3124714743687740081}
+  grayscaleSwapper: {fileID: 794992529186348339}
+  localizationManagerUI: {fileID: 0}
+  playerControllerPhysics: {fileID: 2367143697455831338}
+  masterVolumeSlider: {fileID: 7118358940700968569}
+  musicVolumeSlider: {fileID: 1400726160367586065}
+  sfxVolumeSlider: {fileID: 3124714743687740081}
 --- !u!114 &7118358940700968569 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7444266096932675314, guid: 576a228d7df159249a42f5c424e3c9b0,

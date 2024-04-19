@@ -19,8 +19,8 @@ public class SoundManager : MonoBehaviour
     private AudioSource backgroundMusic;
 
     private float originalMusicVol, originalSoundVol;
-
     public static SoundManager instance;
+
     void Start()
     {
         if (instance == null){
@@ -45,14 +45,12 @@ public class SoundManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         PlayBackgroundMusic();
 
-        
-       
     }
 
     private void Update(){
         ChangeMasterVol(masterSliderVal);
         ChangeMusicVol(musicSliderVal);
-        ChangeSoundVol(soundSliderVal);
+        ChangeSFXVol(soundSliderVal);
     }
 
     public void playAudio(AudioSource soundSource, string type, float valueToScale = 1)
@@ -68,12 +66,12 @@ public class SoundManager : MonoBehaviour
             soundSource.volume = originalMusicVol * musicSliderVal * masterVol * valueToScale;
             
             soundSource.Play(); 
-            Debug.Log(soundSource.volume);
+            // Debug.Log(soundSource.volume);
             
         }
         else
         {
-            Debug.Log("Inputted wrong prompt");
+            // Debug.Log("Inputted wrong prompt");
         }
     }
 
@@ -169,7 +167,7 @@ public class SoundManager : MonoBehaviour
         backgroundMusic.volume = musicVol;
     }
 
-    public void ChangeSoundVol(float sliderVal)
+    public void ChangeSFXVol(float sliderVal)
     {
         soundSliderVal = sliderVal;
         soundVol = sliderVal * originalSoundVol;
@@ -231,7 +229,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void SetMasterSliderVal(float val){
-
+        
     }
 
     public void SetMusicSliderVal(float val){

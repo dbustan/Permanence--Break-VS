@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731703, g: 0.13414727, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8652,12 +8652,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 425505005224736717, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 692bf093bc191c548afede19496dd480,
-        type: 3}
     - target: {fileID: 1088439236432600328, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8670,44 +8664,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 962195720}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Assets.SimpleLocalization.Example1, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Chinese
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635342974636114568, guid: 8546243e06b58674fa1431c8de47cc3c,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6825889572380973297, guid: 8546243e06b58674fa1431c8de47cc3c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8758,6 +8717,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7528195696044500185, guid: 8546243e06b58674fa1431c8de47cc3c,
+        type: 3}
+      propertyPath: localizationManagerUI
+      value: 
+      objectReference: {fileID: 962195720}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
